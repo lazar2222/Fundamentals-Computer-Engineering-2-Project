@@ -1,0 +1,127 @@
+CMEMBUS
+0	ldMAR
+1	incMAR
+2	ldMDR
+3	ldPC
+4	incPC
+5	insSP
+6	decSP
+7	mxMAR0
+8	mxMAR1
+9	mxMAR2
+10	mxPC0
+11	mxPC1
+12	mxMDR0
+13	mxMDR1
+15	mxMDR2
+CFFBUS
+0	stFETCH
+1	clFETCH
+2	stADDR
+3	clADDR
+4	stEXEC
+5	clEXEC
+6	stINTR
+7	clINTR
+CREGBUS
+0	ldIR31..24
+1	ldIR23..16
+2	ldIR15..8
+3	ldIR7..0
+4	ldB15..8
+5	ldB7..0
+6	mxB0
+7	mxB1
+8	ldGPR
+9	mxOFS0
+10	mxOFS1
+11	mxOFS2
+12	mxOFSS0
+13	mxOFSS1
+CPSW
+0	ldPSWSTART
+1	ldPSWZ
+2	ldPSWN
+3	ldPSWV
+4	ldPSWC
+5	ldPSWI
+FHASEFFBUS
+0	FETCH
+1	ADDR
+2	EXEC
+3	INTR
+INSTRUCTBUS
+0	HALT
+1	RTS
+2	RTI
+3	PUSHPSW
+4	POPPSW
+5	PUSH
+6	POP
+7	INTE
+8	INTD
+9	BOVF
+10	BNEQ
+11	BLEQU
+12	JLSS
+13	JLEQ
+14	JMP
+15	LD
+16	ST
+17	JSR
+18	TST
+19	XOR
+20	STRLEN
+21	ADD
+ADDRBUS
+0	immed
+1	memdir
+2	regdir
+3	memind
+4	preincr
+5	postdec
+6	regindpom
+PSW
+0	START
+1	Z
+2	N
+3	V
+4	C
+15	I
+
+mxMAR
+0	PC
+1	IR15..0
+2	B
+3	OFS
+4	SP
+mxB
+0	IR15..0
+1	MDR
+2	GPR
+3 	1
+mxOFS
+0	0
+1	inc
+2	dec
+3	pom
+4	jmppom
+5	2*bru
+mxOFSS
+0 	REG
+1 	PC
+2	A
+3	IVTP
+mxPC
+0	IR15..0
+1	B
+2	OFS
+3	IR23..8
+mxMDR
+0	MEM
+1	A7..0
+2	A15..8
+3	PSW7..0
+4	PSW15..8
+5	PC7..0	
+6	PC15..8

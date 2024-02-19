@@ -1,0 +1,50 @@
+//InterruptCounter.asm
+symbol:
+CNT 00F0
+
+prog: 1000
+LD #1		1000:30 00 00 01
+ST r1		1004:31 22
+THIS:LD r1	1006:30 22
+BNEQ THIS	1008:11 FC
+HALT 		100A:00
+
+prog:1100
+INTD		1100:08
+LD CNT		1101:30 10 00 F0
+ADD #1		1105:36 00 00 01
+ST CNT		1109:31 10 00 F0
+INTE		110D:07
+RTI			110E:02
+
+prog:1200
+INTD		1200:08
+LD CNT      1201:30 10 00 F0
+ADD #-1     1205:36 00 FF FF
+ST CNT      1209:31 10 00 F0
+INTE        120D:07
+RTI         120E:02
+
+prog:1300
+INTD		1300:08
+LD #0       1301:30 00 00 00
+ST CNT      1305:31 10 00 F0
+INTE        1309:07
+RTI         130A:02
+
+prog:1400
+LD #0		1400:30 00 00 00
+ST r1       1404:31 22
+RTI         1406:02
+
+data: 0000
+addres 1100
+addres 1200
+addres 1300
+addres 1400
+addres 0010
+addres 0010
+addres 0010
+addres 0010
+prog: 0010
+RTI

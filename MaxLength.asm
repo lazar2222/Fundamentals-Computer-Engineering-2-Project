@@ -1,0 +1,55 @@
+//MaxLength.asm
+prog: 1000
+LD #0			1000:30 00 00 00
+ST r2			1004:31 24
+LD #2000		1006:30 00 20 00
+ST r3			100A:31 26
+LD 2000			100C:30 10 20 00
+TEST: ST r1		1010:31 22
+BNEQ 3			1012:11 03
+JMP END			1014:20	10 47
+LD ++(r3)		1017:30 46
+ST r5			1019:31	2A
+STRLEN (r5)0	101B:35 6A 00
+XOR #-1			101E:34 00 FF FF
+ADD #1			1012:36 00 00 01
+ST r4			1026:31	28
+LD r2			1028:30	24
+ADD r4			102A:36	28
+JLSS SET		102C:13 10 38
+AFTER: LD r1	102F:30	22
+ADD #-1			1031:36	00 FF FF
+JMP TEST		1035:20	10 10
+SET: LD R4		1038:30	28
+XOR #-1			103A:34	00 FF FF
+ADD #1			103E:36 00 00 01
+ST R2			1042:31	24
+JMP AFTER		1044:20 10 2F
+END: LD r2		1047:30 24
+ST 0FF0			1049:31 10 0F F0
+HALT			104D:00
+
+data: 0000
+addres 0010
+addres 0010
+addres 0010
+addres 0010
+addres 0010
+addres 0010
+addres 0010
+addres 0010
+prog: 0010
+RTI
+
+data: 2000
+int 5					2000:00 05
+addres 					2002:20 0C
+addres 					2004:20 13
+addres 					2006:20 17
+addres 					2009:20 1E
+addres 					200A:20 2E
+string jabuka			200C:6a 61 62 75 6b 61 00
+string ana				2013:61 6e 61 00
+string sveska			2017:73 76 65 73 6b 61 00
+string anavolimilovana	201E:61 6e 61 76 6f 6c 69 6d 69 6c 6f 76 61 6e 61 00
+string abba				202E:61 62 62 61 00
